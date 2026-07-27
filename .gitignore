@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Python / FastAPI
+ai-service/venv/
+ai-service/__pycache__/
+ai-service/**/*.pyc
+ai-service/.pytest_cache/
+ai-service/.ipynb_checkpoints/
+.ipynb_checkpoints/
+
+# Java / Maven
+fraud-detection-backend/target/
+*.class
+
+# IDE
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# Logs
+*.log
+
+# Environment files
+.env
+
+# Frontend
+fraud-detection-frontend/node_modules/
+fraud-detection-frontend/dist/verification-optimization-frontend/public/transactions.json
