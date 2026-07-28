@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.fraudmodel</groupId>
+    <artifactId>deepnetts-model</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.release>17</maven.compiler.release>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+
+        <!-- Deep Netts -->
+        <dependency>
+            <groupId>com.deepnetts</groupId>
+            <artifactId>deepnetts-core-pro</artifactId>
+            <version>4.0.0-beta</version>
+
+            <exclusions>
+                <exclusion>
+                    <groupId>com.deepnetts</groupId>
+                    <artifactId>deepnetts-cuda</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!-- Deep Netts licenca -->
+        <dependency>
+            <groupId>com.deepnetts</groupId>
+            <artifactId>deepnetts-license</artifactId>
+            <version>1.0</version>
+        </dependency>
+
+        <!-- CSV -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-csv</artifactId>
+            <version>1.10.0</version>
+        </dependency>
+
+        
+
+    </dependencies>
+
+</project>
