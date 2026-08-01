@@ -4,8 +4,7 @@ Sistem za otkrivanje potencijalno prevarnih transakcija platnim karticama pomoć
 
 ## Sadržaj
 
-- [Opis projekta](#opis-projekta)
-- [Glavne funkcionalnosti](#glavne-funkcionalnosti)
+- [Cilj projekta](#cilj-projekta)
 - [Arhitektura sistema](#arhitektura-sistema)
 - [Servisi](#servisi)
   - [Glavni backend servis](#glavni-backend-servis)
@@ -14,34 +13,34 @@ Sistem za otkrivanje potencijalno prevarnih transakcija platnim karticama pomoć
 - [Tok obrade transakcija](#tok-obrade-transakcija)
 - [DeepNetts model](#deepnetts-model)
   - [Skup podataka i ulazne karakteristike](#skup-podataka-i-ulazne-karakteristike)
-  - [Priprema podataka](#priprema-podataka)
   - [Arhitektura neuronske mreže](#arhitektura-neuronske-mreže)
   - [Treniranje i čuvanje modela](#treniranje-i-čuvanje-modela)
   - [Predikcija](#predikcija)
 - [Frontend aplikacija](#frontend-aplikacija)
 - [Baza podataka](#baza-podataka)
-- [REST API](#rest-api)
 - [Struktura projekta](#struktura-projekta)
 - [Korišćene tehnologije](#korišćene-tehnologije)
 - [Pokretanje projekta](#pokretanje-projekta)
-- [Primer korišćenja](#primer-korišćenja)
 
-## Opis projekta
 
-Credit Card Fraud Detection je višeslojna aplikacija čiji je cilj automatsko prepoznavanje sumnjivih transakcija. AI model analizira karakteristike transakcije i izračunava verovatnoću da je ona prevarna. Rezultat se zatim prosleđuje glavnom backend servisu, koji čuva podatke i za pozitivnu AI predikciju formira slučaj prevare namenjen daljoj proveri.
+## Cilj projekta
 
-Korisnik preko web aplikacije može da pokrene obradu transakcija, prati zbirne statistike, pregleda izdvojene slučajeve i ažurira njihov status. Na taj način projekat ne prikazuje samo treniranje modela, već kompletan tok od podataka i AI predikcije do poslovne obrade rezultata.
+Cilj projekta je razvoj inteligentnog sistema koji pruža podršku fraud analitičaru u detekciji i obradi potencijalno prevarnih transakcija.
 
-## Glavne funkcionalnosti
+Sistem omogućava:
 
-- generisanje dnevnog skupa transakcija na osnovu postojećeg dataseta;
-- procena verovatnoće prevare pomoću DeepNetts neuronske mreže;
-- izdvajanje transakcija koje je model označio kao prevarne;
-- čuvanje transakcija i slučajeva prevare u PostgreSQL bazi;
-- pregled ukupne statistike i analitike otkrivenih prevara;
-- filtriranje i pregled pojedinačnih fraud slučajeva;
-- promena statusa slučaja, dodavanje komentara i evidentiranje blokiranja kartice ili transakcije;
-- grafički prikaz podataka kroz React dashboard.
+generisanje i obradu novih transakcija,
+procenu verovatnoće prevare pomoću neuronske mreže,
+automatsko izdvajanje sumnjivih transakcija,
+kreiranje fraud case-ova za dalju obradu,
+pregled i filtriranje slučajeva po statusu,
+promenu statusa slučaja,
+unos komentara analitičara,
+blokiranje kartice ili transakcije,
+označavanje slučaja kao lažni alarm,
+prikaz osnovne i detaljne statistike kroz kartice i grafikone.
+Na ovaj način, neuronska mreža se ne koristi izolovano, već kao inteligentna komponenta šire aplikacije za podršku odlučivanju.
+
 
 ## Arhitektura sistema
 
@@ -147,15 +146,7 @@ Model koristi osam ulaznih karakteristika:
 
 Ciljna kolona je `fraud`, gde `0` predstavlja regularnu, a `1` prevarnu transakciju.
 
-### Priprema podataka
 
-Ako prošireni dataset ne postoji, `DatasetGenerator` ga formira na osnovu originalnog dataseta i dodaje vrednost `amount`. Podaci se zatim dele u odnosu 80% za treniranje i 20% za testiranje.
-
-Za skaliranje se koristi DeepNetts `MaxScaler`. Svaka ulazna vrednost deli se maksimalnom vrednošću iste karakteristike iz trening skupa:
-
-```text
-scaledValue = originalValue / maximumValue
-```
 
 Redosled karakteristika i maksimalne vrednosti čuvaju se u `preprocessing_config.json`. Ista konfiguracija mora da se koristi i tokom predikcije, jer bi drugačiji redosled ili način skaliranja proizveo neispravan ulaz za model.
 
@@ -214,37 +205,6 @@ Dva centralna modela su:
 
 `FraudCase` je povezan sa transakcijom koja je dovela do njegovog kreiranja. Status omogućava praćenje slučaja tokom naknadne provere.
 
-## REST API
-
-### Glavni backend — `http://localhost:8080`
-
-| Metoda | Ruta | Opis |
-|---|---|---|
-| `POST` | `/api/daily-processing` | Pokreće dnevnu AI obradu i čuva rezultate |
-| `POST` | `/api/deepnetts/predict` | Predikcija jedne prosleđene transakcije |
-| `GET` | `/api/statistics` | Osnovna statistika sistema |
-| `GET` | `/api/fraud-analytics-statistics` | Detaljna analitika fraud slučajeva |
-| `GET` | `/api/fraud-cases` | Lista svih slučajeva, opciono filtrirana po statusu |
-| `GET` | `/api/fraud-cases/{id}` | Detalji pojedinačnog slučaja |
-| `PUT` | `/api/fraud-cases/{id}` | Ažuriranje statusa, komentara i akcija blokiranja |
-
-### DeepNetts AI servis — `http://localhost:8081`
-
-| Metoda | Ruta | Opis |
-|---|---|---|
-| `POST` | `/process-daily-transactions` | Generiše, analizira i vraća sumnjive transakcije |
-
-### Keras AI servis
-
-| Metoda | Ruta | Opis |
-|---|---|---|
-| `GET` | `/status` | Status servisa i modela |
-| `GET` | `/dataset-info` | Osnovne informacije o datasetu |
-| `GET` | `/dataset-analysis` | Analiza raspodele podataka |
-| `GET` | `/synthetic-sample` | Primer generisanih transakcija |
-| `POST` | `/predict` | Predikcija pojedinačne transakcije |
-| `POST` | `/process-daily-transactions` | Grupna obrada transakcija |
-| `POST` | `/retrain-model` | Ručno pokretanje retreniranja |
 
 ## Struktura projekta
 
@@ -285,28 +245,8 @@ Potrebno je instalirati:
 - Node.js i npm;
 - Python 3.11, samo ako se pokreće alternativni Keras servis.
 
-### 1. Podešavanje baze
 
-Kreirati PostgreSQL bazu:
-
-```sql
-CREATE DATABASE fraud_detection_db;
-```
-
-U fajlu `fraud-detection-backend/src/main/resources/application.properties` podesiti korisničko ime i lozinku lokalne PostgreSQL instance.
-
-### 2. Instaliranje DeepNetts modelskog modula
-
-Glavni backend i AI servis koriste modul `deepnetts-model` kao Maven zavisnost. Iz korena projekta pokrenuti:
-
-```bash
-cd deepnetts-model
-mvn clean install
-```
-
-Za ponovno treniranje modela može se pokrenuti glavna klasa `CreditCardFraudDeepNettsModel`. Dobijeni `.dnet` model i `preprocessing_config.json` potrebno je koristiti u resursima AI servisa.
-
-### 3. Pokretanje DeepNetts AI servisa
+### Pokretanje DeepNetts AI servisa
 
 U novom terminalu:
 
@@ -317,7 +257,7 @@ cd deepnetts-ai-service
 
 Servis će biti dostupan na `http://localhost:8081`.
 
-### 4. Pokretanje glavnog backenda
+###  Pokretanje glavnog backenda
 
 U novom terminalu:
 
@@ -328,7 +268,7 @@ cd fraud-detection-backend
 
 Backend će biti dostupan na `http://localhost:8080`.
 
-### 5. Pokretanje frontenda
+### Pokretanje frontenda
 
 U novom terminalu:
 
@@ -352,15 +292,4 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-## Primer korišćenja
 
-Nakon pokretanja DeepNetts servisa, glavnog backenda i frontenda:
-
-1. otvoriti frontend aplikaciju u pregledaču;
-2. na dashboard stranici pokrenuti dnevnu obradu;
-3. sačekati da backend dobije predikcije DeepNetts servisa i sačuva rezultate;
-4. pregledati osvežene statistike i otvoriti listu fraud slučajeva;
-5. izabrati slučaj radi pregleda detalja transakcije;
-6. promeniti status, dodati komentar ili označiti karticu i transakciju kao blokirane.
-
-Time je obuhvaćen kompletan tok aplikacije: od generisanja i AI analize transakcija do evidencije i obrade potencijalne prevare.
