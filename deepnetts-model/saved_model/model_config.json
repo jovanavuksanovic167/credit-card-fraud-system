@@ -1,0 +1,22 @@
+{
+  "modelName": "DeepNetts Credit Card Fraud Model",
+  "modelFile": "fraud_model.dnet",
+  "numberOfInputs": 8,
+  "numberOfOutputs": 1,
+  "hiddenLayers": [
+    {
+      "neurons": 128,
+      "activation": "RELU"
+    },
+    {
+      "neurons": 64,
+      "activation": "RELU"
+    }
+  ],
+  "outputActivation": "SIGMOID",
+  "lossFunction": "CROSS_ENTROPY",
+  "predictionThreshold": 0.5,
+  "learningRate": 0.001,
+  "epochs": 30,
+  "batchSize": 64
+}

@@ -3,8 +3,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../components/common/Loading";
 import ErrorMessage from "../components/common/ErrorMessage";
 import StatusBadge from "../components/fraudCases/StatusBadge";
-import { getFraudCaseById, updateFraudCase } from "../services/fraudCaseService";
-import { formatCurrency, formatNumber, formatDateTime } from "../utils/formatters";
+import {
+  getFraudCaseById,
+  updateFraudCase,
+} from "../services/fraudCaseService";
+import {
+  formatCurrency,
+  formatNumber,
+  formatDateTime,
+} from "../utils/formatters";
 
 const yesNo = (value) => {
   return value === 1 || value === true ? "Yes" : "No";
@@ -157,7 +164,10 @@ function FraudCaseDetailsPage() {
       <div className="page-header">
         <h2>Fraud Case #{fraudCase.id}</h2>
 
-        <button className="secondary-button" onClick={() => navigate("/fraud-cases")}>
+        <button
+          className="secondary-button"
+          onClick={() => navigate("/fraud-cases")}
+        >
           Back
         </button>
       </div>
@@ -209,7 +219,11 @@ function FraudCaseDetailsPage() {
               />
             </label>
 
-            <button className="primary-button" onClick={saveStatus} disabled={saving}>
+            <button
+              className="primary-button"
+              onClick={saveStatus}
+              disabled={saving}
+            >
               Save
             </button>
           </div>
@@ -235,7 +249,7 @@ function FraudCaseDetailsPage() {
             <strong>
               {formatNumber(transaction.distanceFromLastTransaction, 2)} —{" "}
               {explainDistanceFromLastTransaction(
-                transaction.distanceFromLastTransaction
+                transaction.distanceFromLastTransaction,
               )}
             </strong>
 
@@ -265,11 +279,19 @@ function FraudCaseDetailsPage() {
           Block Card
         </button>
 
-        <button className="danger-button" onClick={blockTransaction} disabled={saving}>
+        <button
+          className="danger-button"
+          onClick={blockTransaction}
+          disabled={saving}
+        >
           Block Transaction
         </button>
 
-        <button className="warning-button" onClick={markFalseAlert} disabled={saving}>
+        <button
+          className="warning-button"
+          onClick={markFalseAlert}
+          disabled={saving}
+        >
           False Alert
         </button>
       </section>

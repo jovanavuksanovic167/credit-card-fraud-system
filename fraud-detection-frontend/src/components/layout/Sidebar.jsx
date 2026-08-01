@@ -8,12 +8,8 @@ function Sidebar() {
           Dashboard
         </NavLink>
 
-        <NavLink to="/fraud-cases">
-          Fraud Cases
-        </NavLink>
-        <NavLink to="/statistics">
-          Statistics
-        </NavLink>
+        <NavLink to="/fraud-cases">Fraud Cases</NavLink>
+        <NavLink to="/statistics">Statistics</NavLink>
       </nav>
     </aside>
   );

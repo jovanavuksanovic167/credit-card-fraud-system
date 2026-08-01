@@ -1,6 +1,6 @@
 import api from "./api";
 
-export const processDailyTransactions = async (count = 1000) => {
-  const response = await api.post(`/daily-processing?count=${count}`);
+export const processDailyTransactions = async () => {
+  const response = await api.post("/daily-processing");
   return response.data;
 };

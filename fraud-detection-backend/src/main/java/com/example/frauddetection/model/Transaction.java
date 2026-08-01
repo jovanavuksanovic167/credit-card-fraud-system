@@ -7,49 +7,42 @@ import java.time.LocalDateTime;
 @Table(name = "transactions")
 public class Transaction {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
 
-    private Double amount;
+  private Double amount;
 
-    private Double distanceFromHome;
-    private Double distanceFromLastTransaction;
-    private Double ratioToMedianPurchasePrice;
+  private Double distanceFromHome;
+  private Double distanceFromLastTransaction;
+  private Double ratioToMedianPurchasePrice;
 
-    private Integer repeatRetailer;
-    private Integer usedChip;
-    private Integer usedPinNumber;
-    private Integer onlineOrder;
+  private Integer repeatRetailer;
+  private Integer usedChip;
+  private Integer usedPinNumber;
+  private Integer onlineOrder;
 
-    private Integer fraud;
+  private Integer fraud;
 
-    private Double fraudProbability;
-    private Integer aiPrediction;
+  private Double fraudProbability;
+  private Integer aiPrediction;
 
-    private LocalDateTime createdAt;
+  private LocalDateTime createdAt;
 
-    public Transaction() {
-        this.createdAt = LocalDateTime.now();
-    }
+  public Transaction() {
+    this.createdAt = LocalDateTime.now();
+  }
 
-    public Transaction(Double amount,
-
-                   Double distanceFromHome,
-
-                   Double distanceFromLastTransaction,
-
-                   Double ratioToMedianPurchasePrice,
-
-                   Integer repeatRetailer,
-
-                   Integer usedChip,
-
-                   Integer usedPinNumber,
-
-                   Integer onlineOrder,
-
-                   Integer fraud) {
+  public Transaction(
+      Double amount,
+      Double distanceFromHome,
+      Double distanceFromLastTransaction,
+      Double ratioToMedianPurchasePrice,
+      Integer repeatRetailer,
+      Integer usedChip,
+      Integer usedPinNumber,
+      Integer onlineOrder,
+      Integer fraud) {
 
     this.amount = amount;
 
@@ -70,100 +63,101 @@ public class Transaction {
     this.fraud = fraud;
 
     this.createdAt = LocalDateTime.now();
+  }
 
-}
+  public Long getId() {
+    return id;
+  }
 
-    public Long getId() {
-        return id;
-    }
-public Double getAmount() {
+  public Double getAmount() {
     return amount;
-}
+  }
 
-public void setAmount(Double amount) {
+  public void setAmount(Double amount) {
     this.amount = amount;
-}
-    public Double getDistanceFromHome() {
-        return distanceFromHome;
-    }
+  }
 
-    public void setDistanceFromHome(Double distanceFromHome) {
-        this.distanceFromHome = distanceFromHome;
-    }
+  public Double getDistanceFromHome() {
+    return distanceFromHome;
+  }
 
-    public Double getDistanceFromLastTransaction() {
-        return distanceFromLastTransaction;
-    }
+  public void setDistanceFromHome(Double distanceFromHome) {
+    this.distanceFromHome = distanceFromHome;
+  }
 
-    public void setDistanceFromLastTransaction(Double distanceFromLastTransaction) {
-        this.distanceFromLastTransaction = distanceFromLastTransaction;
-    }
+  public Double getDistanceFromLastTransaction() {
+    return distanceFromLastTransaction;
+  }
 
-    public Double getRatioToMedianPurchasePrice() {
-        return ratioToMedianPurchasePrice;
-    }
+  public void setDistanceFromLastTransaction(Double distanceFromLastTransaction) {
+    this.distanceFromLastTransaction = distanceFromLastTransaction;
+  }
 
-    public void setRatioToMedianPurchasePrice(Double ratioToMedianPurchasePrice) {
-        this.ratioToMedianPurchasePrice = ratioToMedianPurchasePrice;
-    }
+  public Double getRatioToMedianPurchasePrice() {
+    return ratioToMedianPurchasePrice;
+  }
 
-    public Integer getRepeatRetailer() {
-        return repeatRetailer;
-    }
+  public void setRatioToMedianPurchasePrice(Double ratioToMedianPurchasePrice) {
+    this.ratioToMedianPurchasePrice = ratioToMedianPurchasePrice;
+  }
 
-    public void setRepeatRetailer(Integer repeatRetailer) {
-        this.repeatRetailer = repeatRetailer;
-    }
+  public Integer getRepeatRetailer() {
+    return repeatRetailer;
+  }
 
-    public Integer getUsedChip() {
-        return usedChip;
-    }
+  public void setRepeatRetailer(Integer repeatRetailer) {
+    this.repeatRetailer = repeatRetailer;
+  }
 
-    public void setUsedChip(Integer usedChip) {
-        this.usedChip = usedChip;
-    }
+  public Integer getUsedChip() {
+    return usedChip;
+  }
 
-    public Integer getUsedPinNumber() {
-        return usedPinNumber;
-    }
+  public void setUsedChip(Integer usedChip) {
+    this.usedChip = usedChip;
+  }
 
-    public void setUsedPinNumber(Integer usedPinNumber) {
-        this.usedPinNumber = usedPinNumber;
-    }
+  public Integer getUsedPinNumber() {
+    return usedPinNumber;
+  }
 
-    public Integer getOnlineOrder() {
-        return onlineOrder;
-    }
+  public void setUsedPinNumber(Integer usedPinNumber) {
+    this.usedPinNumber = usedPinNumber;
+  }
 
-    public void setOnlineOrder(Integer onlineOrder) {
-        this.onlineOrder = onlineOrder;
-    }
+  public Integer getOnlineOrder() {
+    return onlineOrder;
+  }
 
-    public Integer getFraud() {
-        return fraud;
-    }
+  public void setOnlineOrder(Integer onlineOrder) {
+    this.onlineOrder = onlineOrder;
+  }
 
-    public void setFraud(Integer fraud) {
-        this.fraud = fraud;
-    }
+  public Integer getFraud() {
+    return fraud;
+  }
 
-    public Double getFraudProbability() {
-        return fraudProbability;
-    }
+  public void setFraud(Integer fraud) {
+    this.fraud = fraud;
+  }
 
-    public void setFraudProbability(Double fraudProbability) {
-        this.fraudProbability = fraudProbability;
-    }
+  public Double getFraudProbability() {
+    return fraudProbability;
+  }
 
-    public Integer getAiPrediction() {
-        return aiPrediction;
-    }
+  public void setFraudProbability(Double fraudProbability) {
+    this.fraudProbability = fraudProbability;
+  }
 
-    public void setAiPrediction(Integer aiPrediction) {
-        this.aiPrediction = aiPrediction;
-    }
+  public Integer getAiPrediction() {
+    return aiPrediction;
+  }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
+  public void setAiPrediction(Integer aiPrediction) {
+    this.aiPrediction = aiPrediction;
+  }
+
+  public LocalDateTime getCreatedAt() {
+    return createdAt;
+  }
 }

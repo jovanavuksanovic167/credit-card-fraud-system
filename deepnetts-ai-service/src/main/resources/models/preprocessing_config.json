@@ -1,0 +1,24 @@
+{
+  "scalingMethod": "SCALE_TO_MAX",
+  "formula": "scaledValue = originalValue / maximumValue",
+  "featureOrder": [
+    "distanceFromHome",
+    "distanceFromLastTransaction",
+    "ratioToMedianPurchasePrice",
+    "repeatRetailer",
+    "usedChip",
+    "usedPinNumber",
+    "onlineOrder",
+    "amount"
+  ],
+  "maximumValues": {
+    "distanceFromHome": 10632.7236328125,
+    "distanceFromLastTransaction": 11851.1044921875,
+    "ratioToMedianPurchasePrice": 266.689697265625,
+    "repeatRetailer": 1.0,
+    "usedChip": 1.0,
+    "usedPinNumber": 1.0,
+    "onlineOrder": 1.0,
+    "amount": 87720.21875
+  }
+}

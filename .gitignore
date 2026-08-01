@@ -31,3 +31,7 @@ fraud-detection-backend/target/
 # Frontend
 fraud-detection-frontend/node_modules/
 fraud-detection-frontend/dist/verification-optimization-frontend/public/transactions.json
+
+keras-ai-service/venv/
+**/__pycache__/
+*.pyc

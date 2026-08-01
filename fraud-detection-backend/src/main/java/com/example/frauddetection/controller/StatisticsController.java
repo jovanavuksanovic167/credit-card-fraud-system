@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class StatisticsController {
 
-    private final StatisticsService statisticsService;
+  private final StatisticsService statisticsService;
 
-    public StatisticsController(StatisticsService statisticsService) {
-        this.statisticsService = statisticsService;
-    }
+  public StatisticsController(StatisticsService statisticsService) {
+    this.statisticsService = statisticsService;
+  }
 
-    @GetMapping
-    public StatisticsResponse getStatistics() {
-        return statisticsService.getStatistics();
-    }
+  @GetMapping
+  public StatisticsResponse getStatistics() {
+    return statisticsService.getStatistics();
+  }
 }

@@ -8,11 +8,6 @@ export const formatCurrency = (value) => {
   return `${Number(value).toFixed(2)} €`;
 };
 
-export const formatPercent = (value) => {
-  if (value === null || value === undefined) return "-";
-  return `${(Number(value) * 100).toFixed(2)}%`;
-};
-
 export const formatDateTime = (value) => {
   if (!value) return "-";
 

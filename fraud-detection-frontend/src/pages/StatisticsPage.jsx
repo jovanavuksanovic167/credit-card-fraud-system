@@ -143,7 +143,9 @@ function StatisticsPage() {
 
         <div className="stat-card">
           <p>Average distance from last transaction</p>
-          <h2>{formatNumber(statistics.averageDistanceFromLastTransaction, 2)}</h2>
+          <h2>
+            {formatNumber(statistics.averageDistanceFromLastTransaction, 2)}
+          </h2>
         </div>
 
         <div className="stat-card">
@@ -180,7 +182,9 @@ function StatisticsPage() {
 
         <ChartPanel
           title="Distance from last transaction categories"
-          data={mapToChartData(statistics.distanceFromLastTransactionCategories)}
+          data={mapToChartData(
+            statistics.distanceFromLastTransactionCategories,
+          )}
         />
 
         <ChartPanel
@@ -203,7 +207,7 @@ function ChartPanel({ title, data }) {
           <XAxis dataKey="name" tick={{ fontSize: 12 }} />
           <YAxis allowDecimals={false} />
           <Tooltip />
-          <Bar dataKey="value" barSize={90}/>
+          <Bar dataKey="value" barSize={90} />
         </BarChart>
       </ResponsiveContainer>
     </div>

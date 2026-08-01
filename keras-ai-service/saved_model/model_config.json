@@ -1,0 +1,27 @@
+{
+    "numericFeatures": [
+        "amount",
+        "distanceFromHome",
+        "distanceFromLastTransaction",
+        "ratioToMedianPurchasePrice"
+    ],
+    "binaryFeatures": [
+        "repeatRetailer",
+        "usedChip",
+        "usedPinNumber",
+        "onlineOrder"
+    ],
+    "featureColumns": [
+        "amount",
+        "distanceFromHome",
+        "distanceFromLastTransaction",
+        "ratioToMedianPurchasePrice",
+        "repeatRetailer",
+        "usedChip",
+        "usedPinNumber",
+        "onlineOrder"
+    ],
+    "threshold": 0.8,
+    "modelName": "Improved model with Batch Normalization",
+    "usesLogTransform": true
+}

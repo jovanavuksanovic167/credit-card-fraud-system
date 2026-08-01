@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "*")
 public class FraudAnalyticsStatisticsController {
 
-    private final FraudAnalyticsStatisticsService statisticsService;
+  private final FraudAnalyticsStatisticsService statisticsService;
 
-    public FraudAnalyticsStatisticsController(FraudAnalyticsStatisticsService statisticsService) {
-        this.statisticsService = statisticsService;
-    }
+  public FraudAnalyticsStatisticsController(FraudAnalyticsStatisticsService statisticsService) {
+    this.statisticsService = statisticsService;
+  }
 
-    @GetMapping
-    public FraudAnalyticsStatisticsResponse getStatistics() {
-        return statisticsService.getStatistics();
-    }
+  @GetMapping
+  public FraudAnalyticsStatisticsResponse getStatistics() {
+    return statisticsService.getStatistics();
+  }
 }

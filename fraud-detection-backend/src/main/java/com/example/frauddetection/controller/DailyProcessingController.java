@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class DailyProcessingController {
 
-    private final DailyProcessingService dailyProcessingService;
+  private final DailyProcessingService dailyProcessingService;
 
-    public DailyProcessingController(DailyProcessingService dailyProcessingService) {
-        this.dailyProcessingService = dailyProcessingService;
-    }
+  public DailyProcessingController(DailyProcessingService dailyProcessingService) {
+    this.dailyProcessingService = dailyProcessingService;
+  }
 
-    @PostMapping
-    public DailyProcessingResponse processDailyTransactions(
-            @RequestParam(defaultValue = "1000") int count) {
-        return dailyProcessingService.processDailyTransactions(count);
-    }
+  @PostMapping
+  public DailyProcessingResponse processDailyTransactions(
+      @RequestParam(defaultValue = "1000") int count) {
+    return dailyProcessingService.processDailyTransactions(count);
+  }
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import StatCard from "../components/dashboard/StatCard";
 import Loading from "../components/common/Loading";
 import ErrorMessage from "../components/common/ErrorMessage";
@@ -17,6 +18,7 @@ function DashboardPage() {
   const loadStatistics = async () => {
     try {
       setError("");
+
       const data = await getStatistics();
       setStatistics(data);
     } catch {
@@ -30,7 +32,8 @@ function DashboardPage() {
     try {
       setProcessing(true);
       setError("");
-      await processDailyTransactions(100);
+
+      await processDailyTransactions();
       await loadStatistics();
     } catch {
       setError("Daily transaction processing failed.");
